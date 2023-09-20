@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Define the source directory where the files are located
+source_dir="/Users/chaewon/Desktop/week4/SWE_2021_41_2023_2_week_4-main"
+
+# Loop through files in the source directory
+for file in "$source_dir"/*; do
+    if [ -f "$file" ]; then
+        # Get the first character of the filename (case-insensitive)
+        first_character="$(basename "$file" | cut -c 1 | tr '[:upper:]' '[:lower:]')"
+
+        # Define the destination directory based on the first character
+        destination="$source_dir/$first_character"
+
+        # Create the destination directory if it doesn't exist
+        mkdir -p "$destination"
+
+        # Move the file to the corresponding folder
+        mv "$file" "$destination/"
+    fi
+done
+
+
+
+
+
+
